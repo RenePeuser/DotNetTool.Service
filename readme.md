@@ -62,11 +62,11 @@ var updateResult = await dotNetTool.UpdateAsync(DotNetToolToInstall, ToolPath);
 
 ### List all tools which are globally installed
 ```csharp
-var listResult = await dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall);
+var listResult = await dotNetTool.ListAsync(DotNetToolToInstall, DotNetToolVersionToInstall);
 ```
 
 ### List all tools which are installed at a specific tool path
 ```csharp
-var listResult = await dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall , ToolPath);
+var listResult = await dotNetTool.ListAsync(DotNetToolToInstall, DotNetToolVersionToInstall , ToolPath);
 ```
 
