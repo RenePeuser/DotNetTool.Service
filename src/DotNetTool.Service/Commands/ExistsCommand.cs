@@ -5,18 +5,18 @@
     using ArgumentCheck;
     using Models;
 
-    public class ExistsCommand
+    internal class ExistsCommand
     {
         private readonly ListCommand _listCommand;
 
-        public ExistsCommand(ListCommand listCommand)
+        internal ExistsCommand(ListCommand listCommand)
         {
             Throw.IfNull(() => listCommand);
 
             _listCommand = listCommand;
         }
 
-        public async Task<DotNetToolInfo> ExistsAsync(string toolName)
+        internal async Task<DotNetToolInfo> ExistsAsync(string toolName)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
 
@@ -24,9 +24,10 @@
             return result.FirstOrDefault(tool => tool.Name.ToLower() == toolName.ToLower());
         }
 
-        public async Task<DotNetToolInfo> ExistsAsync(string toolName, string localPath)
+        internal async Task<DotNetToolInfo> ExistsAsync(string toolName, string localPath)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
+            Throw.IfNullOrWhiteSpace(() => localPath);
 
             var result = await _listCommand.ListAsync(localPath);
             return result.FirstOrDefault(tool => tool.Name.ToLower() == toolName.ToLower());

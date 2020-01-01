@@ -8,21 +8,21 @@ using DotNetTool.Service.Services;
 
 namespace DotNetTool.Service.Commands
 {
-    public class ListCommand
+    internal class ListCommand
     {
         private readonly IProcessService _processService;
 
-        public ListCommand(IProcessService processService)
+        internal ListCommand(IProcessService processService)
         {
             _processService = processService;
         }
 
-        public Task<IEnumerable<DotNetToolInfo>> ListAsync()
+        internal Task<IEnumerable<DotNetToolInfo>> ListAsync()
         {
             return GetAllInternalAsync(null);
         }
 
-        public Task<IEnumerable<DotNetToolInfo>> ListAsync(string path)
+        internal Task<IEnumerable<DotNetToolInfo>> ListAsync(string path)
         {
             return GetAllInternalAsync(path);
         }

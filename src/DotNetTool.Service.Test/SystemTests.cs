@@ -41,7 +41,7 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
-        public async Task Install_Command_Should_Install_Expected_Tool_Also_With_Given_Tool_Path()
+        public async Task Install_Command_Should_Install_Expected_Tool_Also_With_Tool_Path()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall, _toolPath);
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
@@ -58,7 +58,7 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
-        public async Task Uninstall_Command_Should_Uninstall_Expected_Tool_Also_With_Given_Tool_Path()
+        public async Task Uninstall_Command_Should_Uninstall_Expected_Tool_Also_With_Tool_Path()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall, _toolPath);
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
@@ -116,7 +116,7 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
-        public async Task Update_Should_Not_Work_With_PreRelease_Versions_Also_With_Given_Tool_Path()
+        public async Task Update_Should_Not_Work_With_PreRelease_Versions_Also_With_Tool_Path()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, OlderDotNetToolVersion, _toolPath);
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
@@ -146,7 +146,7 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
-        public async Task GetInstalled_Command_Should_Return_All_Installed_Tools()
+        public async Task List_Command_Should_Return_All_Installed_Tools()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall);
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
@@ -156,7 +156,7 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
-        public async Task GetInstalled_Command_Should_Return_All_Installed_Tools_From_Tool_Path()
+        public async Task List_Command_Should_Return_All_Installed_Tools_From_Tool_Path()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall, _toolPath);
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
