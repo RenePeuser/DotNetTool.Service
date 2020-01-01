@@ -49,13 +49,11 @@ var uninstallResult = await dotNetTool.UninstallAsync(DotNetToolToInstall, ToolP
 ```
 
 ### Update a dot net tool globally
-[Hint update does not work with prerelease versions !!](https://docs.microsoft.com/de-de/dotnet/core/tools/dotnet-tool-update)
 ```csharp
 var updateResult = await dotNetTool.UpdateAsync(DotNetToolToInstall);
 ```
 
 ### Update a dot net tool with tool path
-[Hint update does not work with prerelease versions !!](https://docs.microsoft.com/de-de/dotnet/core/tools/dotnet-tool-update)
 ```csharp
 var updateResult = await dotNetTool.UpdateAsync(DotNetToolToInstall, ToolPath);
 ```
