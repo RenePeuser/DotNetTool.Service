@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using DotNetTool.Service.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTool.Service.Test
@@ -23,7 +22,7 @@ namespace DotNetTool.Service.Test
             _dotNetTool = DotNetToolFactory.Create();
 
             var existingTool = await _dotNetTool.ExistsAsync(DotNetToolToInstall);
-            if (existingTool.IsNotNull())
+            if (existingTool != null)
             {
                 var uninstallResult = await _dotNetTool.UninstallAsync(DotNetToolToInstall);
                 if (uninstallResult.ExitCode != 0)
@@ -73,7 +72,7 @@ namespace DotNetTool.Service.Test
             var gitversionTool = "GitVersion.Tool";
 
             var existingTool = await _dotNetTool.ExistsAsync(gitversionTool);
-            if (existingTool.IsNotNull())
+            if (existingTool != null)
             {
                 var uninstallResult = await _dotNetTool.UninstallAsync(gitversionTool);
                 Assert.AreEqual(0, uninstallResult.ExitCode, uninstallResult.Output);
@@ -92,7 +91,7 @@ namespace DotNetTool.Service.Test
             var gitversionTool = "GitVersion.Tool";
 
             var existingTool = await _dotNetTool.ExistsAsync(gitversionTool, _toolPath);
-            if (existingTool.IsNotNull())
+            if (existingTool != null)
             {
                 var uninstallResult = await _dotNetTool.UninstallAsync(gitversionTool, _toolPath);
                 Assert.AreEqual(0, uninstallResult.ExitCode, uninstallResult.Output);
@@ -152,7 +151,7 @@ namespace DotNetTool.Service.Test
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
 
             var installedTools = await _dotNetTool.GetAllInstalledAsync();
-            Assert.IsTrue(installedTools.Any(tool => tool.Name.ToLower().EqualsTo(DotNetToolToInstall.ToLower())));
+            Assert.IsTrue(installedTools.Any(tool => tool.Name.ToLower() == DotNetToolToInstall.ToLower()));
         }
 
         [TestMethod]
@@ -162,14 +161,14 @@ namespace DotNetTool.Service.Test
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
 
             var installedTools = await _dotNetTool.GetAllInstalledAsync(_toolPath);
-            Assert.IsTrue(installedTools.Any(tool => tool.Name.ToLower().EqualsTo(DotNetToolToInstall.ToLower())));
+            Assert.IsTrue(installedTools.Any(tool => tool.Name.ToLower() == DotNetToolToInstall.ToLower()));
         }
 
         [TestCleanup]
         public async Task CleanupAsync()
         {
             var globalExistingTool = await _dotNetTool.ExistsAsync(DotNetToolToInstall);
-            if (globalExistingTool.IsNotNull())
+            if (globalExistingTool != null)
             {
                 var uninstallResult = await _dotNetTool.UninstallAsync(DotNetToolToInstall);
                 if (uninstallResult.ExitCode != 0)
@@ -179,7 +178,7 @@ namespace DotNetTool.Service.Test
             }
 
             var localTool = await _dotNetTool.ExistsAsync(DotNetToolToInstall, _toolPath);
-            if (localTool.IsNotNull())
+            if (localTool != null)
             {
                 var uninstallResult = await _dotNetTool.UninstallAsync(DotNetToolToInstall, _toolPath);
                 if (uninstallResult.ExitCode != 0)

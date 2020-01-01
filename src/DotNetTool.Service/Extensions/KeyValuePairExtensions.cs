@@ -5,9 +5,9 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class KeyValuePairExtensions
+    internal static class KeyValuePairExtensions
     {
-        public static string ToString<T>(this KeyValuePair<string, Func<T, object>> compiledExpression, T argument)
+        internal static string ToString<T>(this KeyValuePair<string, Func<T, object>> compiledExpression, T argument)
         {
             Throw.IfNull<object>(() => argument);
 

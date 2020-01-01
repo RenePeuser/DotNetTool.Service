@@ -8,16 +8,16 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class EnumerableExtensions
+    internal static class EnumerableExtensions
     {
-        public static IEnumerable<string> FilterNullOrWhitespace(this IEnumerable<string> source)
+        internal static IEnumerable<string> FilterNullOrWhitespace(this IEnumerable<string> source)
         {
             Throw.IfNull(() => source);
 
             return source.Where(s => s.IsNotNullOrWhiteSpace());
         }
 
-        public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+        internal static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
             Throw.IfNull(() => source);
             Throw.IfNull(() => action);
@@ -26,7 +26,7 @@ namespace DotNetTool.Service.Extensions
             sourceList.ForEach(action);
         }
 
-        public static bool ContainsAny<T>(this IEnumerable<T> source, params T[] expectedItems)
+        internal static bool ContainsAny<T>(this IEnumerable<T> source, params T[] expectedItems)
         {
             Throw.IfNull(() => source);
             Throw.IfNull(() => expectedItems);
@@ -34,7 +34,7 @@ namespace DotNetTool.Service.Extensions
             return expectedItems.Any(source.Contains);
         }
 
-        public static bool IsEmpty<T>(this IEnumerable<T> source)
+        internal static bool IsEmpty<T>(this IEnumerable<T> source)
         {
             Throw.IfNull(() => source);
 
@@ -42,7 +42,7 @@ namespace DotNetTool.Service.Extensions
         }
 
 
-        public static string ToString<T>(this IEnumerable<T> source, string title, params Expression<Func<T, object>>[] infoSelector)
+        internal static string ToString<T>(this IEnumerable<T> source, string title, params Expression<Func<T, object>>[] infoSelector)
         {
             Throw.IfNull(() => source);
             Throw.IfNull(() => title);
@@ -56,7 +56,7 @@ namespace DotNetTool.Service.Extensions
             return stringBuilder.ToString();
         }
 
-        public static IEnumerable<T> Concat<T>(this IEnumerable<T> source, T itemToConcat)
+        internal static IEnumerable<T> Concat<T>(this IEnumerable<T> source, T itemToConcat)
         {
             Throw.IfNull(() => source);
 
@@ -68,14 +68,14 @@ namespace DotNetTool.Service.Extensions
             yield return itemToConcat;
         }
 
-        public static string Flatten(this IEnumerable<string> strings)
+        internal static string Flatten(this IEnumerable<string> strings)
         {
             Throw.IfNull(() => strings);
 
             return strings.Flatten(string.Empty);
         }
 
-        public static string Flatten(this IEnumerable<string> strings, string separator)
+        internal static string Flatten(this IEnumerable<string> strings, string separator)
         {
             Throw.IfNull(() => strings);
             Throw.IfNull(() => separator);
@@ -83,7 +83,7 @@ namespace DotNetTool.Service.Extensions
             return string.Join(separator, strings);
         }
 
-        public static bool IsNullOrEmpty(this IEnumerable source)
+        internal static bool IsNullOrEmpty(this IEnumerable source)
         {
             if (source.IsNull())
             {

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace DotNetTool.Service.Services
 {
-    public interface IProcess : IDisposable
+    internal interface IProcess : IDisposable
     {
         bool EnableRaisingEvents { get; set; }
 

@@ -3,7 +3,7 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Services
 {
-    public class ProcessBuilder : IProcessBuilder
+    internal class ProcessBuilder : IProcessBuilder
     {
         public IProcess BuildFrom(string command, string arguments)
         {

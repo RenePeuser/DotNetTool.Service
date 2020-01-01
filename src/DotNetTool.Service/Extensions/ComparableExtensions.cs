@@ -3,9 +3,9 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class ComparableExtensions
+    internal static class ComparableExtensions
     {
-        public static bool IsEqualTo<T>(this T source, T target)
+        internal static bool IsEqualTo<T>(this T source, T target)
             where T : IComparable
         {
             Throw.IfNull<object>(() => source);
@@ -14,7 +14,7 @@ namespace DotNetTool.Service.Extensions
             return source.CompareTo(target) == 0;
         }
 
-        public static bool IsLessThan<T>(this T source, T target)
+        internal static bool IsLessThan<T>(this T source, T target)
             where T : IComparable
         {
             Throw.IfNull<object>(() => source);
@@ -23,7 +23,7 @@ namespace DotNetTool.Service.Extensions
             return source.CompareTo(target) < 0;
         }
 
-        public static bool IsLessOrEqual<T>(this T source, T target)
+        internal static bool IsLessOrEqual<T>(this T source, T target)
             where T : IComparable
         {
             Throw.IfNull<object>(() => source);
@@ -32,7 +32,7 @@ namespace DotNetTool.Service.Extensions
             return !source.IsGreaterThan(target);
         }
 
-        public static bool IsGreaterThan<T>(this T source, T target)
+        internal static bool IsGreaterThan<T>(this T source, T target)
             where T : IComparable
         {
             Throw.IfNull<object>(() => source);
@@ -41,7 +41,7 @@ namespace DotNetTool.Service.Extensions
             return source.CompareTo(target) > 0;
         }
 
-        public static bool IsGreaterOrEqual<T>(this T source, T target)
+        internal static bool IsGreaterOrEqual<T>(this T source, T target)
             where T : IComparable
         {
             Throw.IfNull<object>(() => source);
@@ -50,7 +50,7 @@ namespace DotNetTool.Service.Extensions
             return !source.IsLessThan(target);
         }
 
-        public static bool IsInRange<T>(this T source, T lowerLimit, T upperLimit)
+        internal static bool IsInRange<T>(this T source, T lowerLimit, T upperLimit)
             where T : IComparable
         {
             Throw.IfLessThan(() => upperLimit, lowerLimit);

@@ -6,39 +6,39 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
-        public static bool ContainsNotAnyOf(this string source, params string[] notContainStrings)
+        internal static bool ContainsNotAnyOf(this string source, params string[] notContainStrings)
         {
             return !notContainStrings.Any(source.Contains);
         }
 
-        public static bool IsNullOrEmpty(this string source)
+        internal static bool IsNullOrEmpty(this string source)
         {
             return string.IsNullOrEmpty(source);
         }
 
-        public static bool IsNotNullOrEmpty(this string source)
+        internal static bool IsNotNullOrEmpty(this string source)
         {
             return !source.IsNullOrEmpty();
         }
 
-        public static bool IsEmpty(this string source)
+        internal static bool IsEmpty(this string source)
         {
             return source == string.Empty;
         }
 
-        public static bool IsNullOrWhiteSpace(this string source)
+        internal static bool IsNullOrWhiteSpace(this string source)
         {
             return string.IsNullOrWhiteSpace(source);
         }
 
-        public static bool IsNotNullOrWhiteSpace(this string source)
+        internal static bool IsNotNullOrWhiteSpace(this string source)
         {
             return source.IsNullOrWhiteSpace().IsFalse();
         }
 
-        public static bool IsValid(this string source)
+        internal static bool IsValid(this string source)
         {
             if (string.IsNullOrEmpty(source))
             {
@@ -53,12 +53,12 @@ namespace DotNetTool.Service.Extensions
             return true;
         }
 
-        public static bool IsNotValid(this string source)
+        internal static bool IsNotValid(this string source)
         {
             return !source.IsValid();
         }
 
-        public static DateTime ToDateTime(this string source, DateTimeFormatInfo dateTimeFormatInfo, DateTimeStyles dateTimeStyles)
+        internal static DateTime ToDateTime(this string source, DateTimeFormatInfo dateTimeFormatInfo, DateTimeStyles dateTimeStyles)
         {
             Throw.IfNullOrWhiteSpace(() => source);
 
@@ -73,7 +73,7 @@ namespace DotNetTool.Service.Extensions
             return dateTime;
         }
 
-        public static IEnumerable<string> Split(this string value, int blockLength)
+        internal static IEnumerable<string> Split(this string value, int blockLength)
         {
             if (value.IsNotValid())
             {
@@ -93,7 +93,7 @@ namespace DotNetTool.Service.Extensions
             }
         }
 
-        public static string SubstringUpTo(this string value, int startIndex, int length)
+        internal static string SubstringUpTo(this string value, int startIndex, int length)
         {
             Throw.IfNullOrWhiteSpace(() => value);
 

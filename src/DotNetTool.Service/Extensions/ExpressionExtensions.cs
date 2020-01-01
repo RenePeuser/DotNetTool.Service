@@ -6,9 +6,9 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class ExpressionExtensions
+    internal static class ExpressionExtensions
     {
-        public static string NameOf(this Expression expression)
+        internal static string NameOf(this Expression expression)
         {
             Throw.IfNull(() => expression);
 
@@ -55,7 +55,7 @@ namespace DotNetTool.Service.Extensions
             return name;
         }
 
-        public static Dictionary<string, Func<T, object>> ToCompiledExpressionWithInfo<T>(this Expression<Func<T, object>>[] expressions)
+        internal static Dictionary<string, Func<T, object>> ToCompiledExpressionWithInfo<T>(this Expression<Func<T, object>>[] expressions)
         {
             Throw.IfNull(() => expressions);
 

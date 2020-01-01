@@ -6,11 +6,11 @@ using DotNetTool.Service.Models;
 
 namespace DotNetTool.Service.Services
 {
-    public class ProcessService : IProcessService
+    internal class ProcessService : IProcessService
     {
         private readonly IProcessBuilder _processBuilder;
 
-        public ProcessService(IProcessBuilder processBuilder)
+        internal ProcessService(IProcessBuilder processBuilder)
         {
             Throw.IfNull(() => processBuilder);
 

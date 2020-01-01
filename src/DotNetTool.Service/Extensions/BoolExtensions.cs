@@ -3,9 +3,9 @@ using DotNetTool.Service.ArgumentCheck;
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class BoolExtensions
+    internal static class BoolExtensions
     {
-        public static bool IfFalseThen(this bool value, Action action)
+        internal static bool IfFalseThen(this bool value, Action action)
         {
             Throw.IfNull(() => action);
 
@@ -17,12 +17,12 @@ namespace DotNetTool.Service.Extensions
             return value;
         }
 
-        public static bool IsFalse(this bool source)
+        internal static bool IsFalse(this bool source)
         {
             return !source;
         }
 
-        public static bool IfTrueThen(this bool value, Action action)
+        internal static bool IfTrueThen(this bool value, Action action)
         {
             Throw.IfNull(() => action);
 
@@ -34,14 +34,14 @@ namespace DotNetTool.Service.Extensions
             return value;
         }
 
-        public static bool If(this bool value, Action action)
+        internal static bool If(this bool value, Action action)
         {
             Throw.IfNull(() => action);
 
             return IfTrueThen(value, action);
         }
 
-        public static bool Else(this bool value, Action action)
+        internal static bool Else(this bool value, Action action)
         {
             Throw.IfNull(() => action);
 

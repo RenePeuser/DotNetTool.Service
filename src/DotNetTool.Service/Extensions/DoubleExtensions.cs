@@ -2,21 +2,21 @@
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class DoubleExtensions
+    internal static class DoubleExtensions
     {
-        public static bool IsNan(this double value)
+        internal static bool IsNan(this double value)
         {
             return double.IsNaN(value);
         }
 
-        public static bool IsZero(this double source)
+        internal static bool IsZero(this double source)
         {
             var result = source.EqualsTo(default);
 
             return result;
         }
 
-        public static int Ceiling(this double value)
+        internal static int Ceiling(this double value)
         {
             return (int) Math.Ceiling(value);
         }

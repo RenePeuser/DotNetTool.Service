@@ -2,9 +2,9 @@
 
 namespace DotNetTool.Service.Extensions
 {
-    public static class IntegerExtensions
+    internal static class IntegerExtensions
     {
-        public static double DivideBy(this int value, double divisor)
+        internal static double DivideBy(this int value, double divisor)
         {
             if (divisor.IsZero())
             {
@@ -19,17 +19,17 @@ namespace DotNetTool.Service.Extensions
             return value / divisor;
         }
 
-        public static int MultiplyBy(this int value, int multiplier)
+        internal static int MultiplyBy(this int value, int multiplier)
         {
             return value * multiplier;
         }
 
-        public static int Plus(this int value, int addend)
+        internal static int Plus(this int value, int addend)
         {
             return value + addend;
         }
 
-        public static double ToDouble(this int value)
+        internal static double ToDouble(this int value)
         {
             return value;
         }
