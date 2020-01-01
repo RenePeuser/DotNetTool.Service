@@ -177,13 +177,17 @@ namespace DotNetTool.Service.Test
                 }
             }
 
-            var localTool = await _dotNetTool.ExistsAsync(DotNetToolToInstall, _toolPath);
-            if (localTool != null)
+            // Timing sometimes test folder is cleaned up already, so no need to uninstall anything.
+            if (Directory.Exists(_toolPath))
             {
-                var uninstallResult = await _dotNetTool.UninstallAsync(DotNetToolToInstall, _toolPath);
-                if (uninstallResult.ExitCode != 0)
+                var localTool = await _dotNetTool.ExistsAsync(DotNetToolToInstall, _toolPath);
+                if (localTool != null)
                 {
-                    throw new Exception(uninstallResult.Output);
+                    var uninstallResult = await _dotNetTool.UninstallAsync(DotNetToolToInstall, _toolPath);
+                    if (uninstallResult.ExitCode != 0)
+                    {
+                        throw new Exception(uninstallResult.Output);
+                    }
                 }
             }
         }
