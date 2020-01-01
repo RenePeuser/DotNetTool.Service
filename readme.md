@@ -1,7 +1,7 @@
 # DotNetTool.Service
-
 ```
 !!! Prerelease !!!
+!!! API, arguments etc, can be changed in next versions !!!
 !!! Hint still in development !!!
 !!! Not all commands and not all arguments are implemented right now !!!
 ```
@@ -13,6 +13,13 @@ This library provides you the 'dotnet tool' command as a service. The commands a
 * .NET Standard 2.0 compatible projects
 
 ## Install package
+
+```bash
+dotnet add package DotNetTool.Service --version 0.1.1-beta
+```
+
+![](./assets/pack-manager.png)
+
 
 ## Usage
 
