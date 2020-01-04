@@ -47,24 +47,22 @@ var uninstallResult = await dotNetTool.UninstallAsync(DotNetToolToInstall, ToolP
 ```
 
 ### Update a dot net tool globally
-[Hint update does not work with prerelease versions !!](https://docs.microsoft.com/de-de/dotnet/core/tools/dotnet-tool-update)
 ```csharp
 var updateResult = await dotNetTool.UpdateAsync(DotNetToolToInstall);
 ```
 
 ### Update a dot net tool with tool path
-[Hint update does not work with prerelease versions !!](https://docs.microsoft.com/de-de/dotnet/core/tools/dotnet-tool-update)
 ```csharp
 var updateResult = await dotNetTool.UpdateAsync(DotNetToolToInstall, ToolPath);
 ```
 
 ### List all tools which are globally installed
 ```csharp
-var listResult = await dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall);
+var listResult = await dotNetTool.ListAsync(DotNetToolToInstall, DotNetToolVersionToInstall);
 ```
 
 ### List all tools which are installed at a specific tool path
 ```csharp
-var listResult = await dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall , ToolPath);
+var listResult = await dotNetTool.ListAsync(DotNetToolToInstall, DotNetToolVersionToInstall , ToolPath);
 ```
 
