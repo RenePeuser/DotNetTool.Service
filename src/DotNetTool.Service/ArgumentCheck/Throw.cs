@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
-using DotNetTool.Service.Extensions;
 
 namespace DotNetTool.Service.ArgumentCheck
 {

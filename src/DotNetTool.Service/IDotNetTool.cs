@@ -5,7 +5,7 @@ namespace DotNetTool.Service
     using System.Threading.Tasks;
     using Models;
 
-    internal interface IDotNetTool
+    public interface IDotNetTool
     {
         Task<CliRunResult> InstallAsync(string toolName, string version);
         Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath);

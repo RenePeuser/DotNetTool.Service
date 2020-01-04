@@ -33,19 +33,5 @@ namespace DotNetTool.Service.Extensions
 
             return value;
         }
-
-        internal static bool If(this bool value, Action action)
-        {
-            Throw.IfNull(() => action);
-
-            return IfTrueThen(value, action);
-        }
-
-        internal static bool Else(this bool value, Action action)
-        {
-            Throw.IfNull(() => action);
-
-            return IfFalseThen(value, action);
-        }
     }
 }

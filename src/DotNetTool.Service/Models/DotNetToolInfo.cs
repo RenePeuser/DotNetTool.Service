@@ -5,7 +5,7 @@
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     public class DotNetToolInfo
     {
-        public DotNetToolInfo(string name, string version, string command)
+        internal DotNetToolInfo(string name, string version, string command)
         {
             Name = name;
             Version = version;

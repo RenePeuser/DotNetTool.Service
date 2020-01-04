@@ -10,7 +10,7 @@ namespace DotNetTool.Service.Services
     {
         private readonly Process _process;
 
-        public ProcessProxy(Process process)
+        internal ProcessProxy(Process process)
         {
             Throw.IfNull(() => process);
 

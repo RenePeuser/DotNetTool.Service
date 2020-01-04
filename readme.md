@@ -7,8 +7,6 @@
 ```
 This library provides you the 'dotnet tool' command as a service. The commands are wrapped so you can handle very comfortable the commands of the 'dotnet tool' cli as a service.
 
-## 
-
 ## Prerequisites
 * .NET Standard 2.0 compatible projects
 

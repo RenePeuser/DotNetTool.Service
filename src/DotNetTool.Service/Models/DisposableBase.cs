@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal abstract class DisposableBase : IDisposable
+    public abstract class DisposableBase : IDisposable
     {
         private bool _disposed;
 

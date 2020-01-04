@@ -5,7 +5,7 @@
     [DebuggerDisplay("ExitCode: '{" + nameof(ExitCode) + "}'")]
     public class CliRunResult
     {
-        public CliRunResult(int exitCode, string output)
+        internal CliRunResult(int exitCode, string output)
         {
             ExitCode = exitCode;
             Output = output;
