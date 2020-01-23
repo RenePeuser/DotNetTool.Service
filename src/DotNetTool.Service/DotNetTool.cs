@@ -2,6 +2,7 @@
 
 namespace DotNetTool.Service
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Commands;
@@ -51,14 +52,34 @@ namespace DotNetTool.Service
             return _listCommand.ListAsync(localPath);
         }
 
+        public Task<CliRunResult> InstallAsync(string toolName)
+        {
+            return _installCommand.InstallAsync(toolName);
+        }
+
+        public Task<CliRunResult> InstallAsync(string toolName, Uri source)
+        {
+            return _installCommand.InstallAsync(toolName, source);
+        }
+
         public Task<CliRunResult> InstallAsync(string toolName, string version)
         {
             return _installCommand.InstallAsync(toolName, version);
         }
 
+        public Task<CliRunResult> InstallAsync(string toolName, string version, Uri source)
+        {
+            return _installCommand.InstallAsync(toolName, version, source);
+        }
+
         public Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath)
         {
             return _installCommand.InstallAsync(toolName, version, toolPath);
+        }
+
+        public Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath, Uri source)
+        {
+            return _installCommand.InstallAsync(toolName, version, toolPath, source);
         }
 
         public Task<CliRunResult> UninstallAsync(string toolName)

@@ -11,6 +11,7 @@ namespace DotNetTool.Service.Test
     {
         private DotNetTool _dotNetTool;
         private string _toolPath;
+        private Uri _sourceUri = new Uri("https://api.nuget.org/v3/index.json");
         private const string DotNetToolToInstall = "DotNetTool.Builder";
         private const string DotNetToolVersionToInstall = "0.5.6-beta";
         private const string OlderDotNetToolVersion = "0.5.5-beta";
@@ -33,6 +34,20 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
+        public async Task Install_No_Version_Command_Should_Install_Expected_Tool()
+        {
+            var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall);
+            Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
+        }
+
+        [TestMethod]
+        public async Task Install_With_Uri_Command_Should_Install_Expected_Tool()
+        {
+            var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, _sourceUri);
+            Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
+        }
+
+        [TestMethod]
         public async Task Install_Command_Should_Install_Expected_Tool()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall);
@@ -40,9 +55,23 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
+        public async Task Install_Command_Should_Install_Expected_Tool_With_Uri()
+        {
+            var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall, _sourceUri);
+            Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
+        }
+
+        [TestMethod]
         public async Task Install_Command_Should_Install_Expected_Tool_Also_With_Tool_Path()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall, _toolPath);
+            Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
+        }
+
+        [TestMethod]
+        public async Task Install_Command_Should_Install_Expected_Tool_Also_With_Tool_Path_With_Uri()
+        {
+            var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall, DotNetToolVersionToInstall, _toolPath, _sourceUri);
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
         }
 
@@ -104,6 +133,7 @@ namespace DotNetTool.Service.Test
             Assert.AreEqual(0, updateResult.ExitCode, updateResult.Output);
         }
 
+        [Ignore]
         [TestMethod]
         public async Task Update_Should_Not_Work_With_PreRelease_Versions()
         {
@@ -114,6 +144,7 @@ namespace DotNetTool.Service.Test
             Assert.AreEqual(1, updateResult.ExitCode, updateResult.Output);
         }
 
+        [Ignore]
         [TestMethod]
         public async Task Update_Should_Not_Work_With_PreRelease_Versions_Also_With_Tool_Path()
         {
