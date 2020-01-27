@@ -10,7 +10,8 @@
     <PackageProjectUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</PackageProjectUrl>
     <RepositoryUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</RepositoryUrl>
     <PackageReleaseNotes>This is a prerelease version of DotNetTool.Service
-- Add RunAsync for any commands to call</PackageReleaseNotes>
+- Add RunAsync for any commands to call
+- Add missing methods to IDotNetTool interface</PackageReleaseNotes>
     <Description>Use 'dotnet tool' as service in your .net projects. The commands are wrapped so you can handle very comfortable the commands of the 'dotnet tool' cli as a service.</Description>
     <PackageTags>C#;DotNet;CLI;dotenet tool;dotnet tool as as service;DNTAAS;</PackageTags>
   </PropertyGroup>
