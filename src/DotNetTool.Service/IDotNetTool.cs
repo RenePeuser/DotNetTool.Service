@@ -21,5 +21,7 @@ namespace DotNetTool.Service
 
         Task<IEnumerable<DotNetToolInfo>> GetAllInstalledAsync();
         Task<IEnumerable<DotNetToolInfo>> GetAllInstalledAsync(string localPath);
+
+        Task<CliRunResult> RunAsync(string command, string arguments);
     }
 }

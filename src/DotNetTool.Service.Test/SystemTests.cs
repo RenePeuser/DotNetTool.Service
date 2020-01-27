@@ -34,6 +34,13 @@ namespace DotNetTool.Service.Test
         }
 
         [TestMethod]
+        public async Task Run_Custom_Command()
+        {
+            var installResult = await _dotNetTool.RunAsync("dotnet", "tool list -g");
+            Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
+        }
+
+        [TestMethod]
         public async Task Install_No_Version_Command_Should_Install_Expected_Tool()
         {
             var installResult = await _dotNetTool.InstallAsync(DotNetToolToInstall);

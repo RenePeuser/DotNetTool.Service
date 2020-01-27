@@ -13,8 +13,9 @@ namespace DotNetTool.Service
             var uninstallCommand = new UninstallCommand(processService);
             var getAllCommand = new ListCommand(processService);
             var existsCommand = new ExistsCommand(getAllCommand);
+            var customCommand = new CustomCommand(processService);
 
-            return new DotNetTool(installCommand, updateCommand, existsCommand, uninstallCommand, getAllCommand);
+            return new DotNetTool(installCommand, updateCommand, existsCommand, uninstallCommand, getAllCommand, customCommand);
         }
     }
 }

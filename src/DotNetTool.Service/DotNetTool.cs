@@ -16,8 +16,9 @@ namespace DotNetTool.Service
         private readonly ExistsCommand _existsCommand;
         private readonly UninstallCommand _uninstallCommand;
         private readonly ListCommand _listCommand;
+        private readonly CustomCommand _customCommand;
 
-        internal DotNetTool(InstallCommand installCommand, UpdateCommand updateCommand, ExistsCommand existsCommand, UninstallCommand uninstallCommand, ListCommand listCommand)
+        internal DotNetTool(InstallCommand installCommand, UpdateCommand updateCommand, ExistsCommand existsCommand, UninstallCommand uninstallCommand, ListCommand listCommand, CustomCommand customCommand)
         {
             Throw.IfNull(() => installCommand);
             Throw.IfNull(() => updateCommand);
@@ -30,6 +31,7 @@ namespace DotNetTool.Service
             _existsCommand = existsCommand;
             _uninstallCommand = uninstallCommand;
             _listCommand = listCommand;
+            _customCommand = customCommand;
         }
 
         public Task<CliRunResult> UpdateAsync(string toolName)
@@ -50,6 +52,11 @@ namespace DotNetTool.Service
         public Task<IEnumerable<DotNetToolInfo>> GetAllInstalledAsync(string localPath)
         {
             return _listCommand.ListAsync(localPath);
+        }
+
+        public Task<CliRunResult> RunAsync(string command, string arguments)
+        {
+            return _customCommand.RunAsync(command, arguments);
         }
 
         public Task<CliRunResult> InstallAsync(string toolName)
