@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Authors>Rene Peuser</Authors>
     <Company>Rene Peuser Softwaresolutions</Company>
     <Product>DotNetTool.Service</Product>
