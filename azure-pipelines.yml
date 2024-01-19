@@ -15,12 +15,6 @@ variables:
 
 steps:
 
-- task: GitVersion@5
-  displayName: git version
-  inputs:
-    runtime: 'core'
-    updateAssemblyInfo: true
-
 - script: dotnet build --configuration $(buildConfiguration) ./src/DotNetTool.Service.sln  /p:Version='$(GitVersion.NuGetVersion)'
   displayName: 'dotnet build $(buildConfiguration)'
 
