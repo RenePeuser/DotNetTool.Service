@@ -2,7 +2,7 @@
 {
     internal static class ObjectExtensions
     {
-        internal static T As<T>(this object source)
+        internal static T? As<T>(this object source)
         {
             var result = default(T);
 

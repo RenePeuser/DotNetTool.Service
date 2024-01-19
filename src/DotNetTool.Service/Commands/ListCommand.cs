@@ -19,7 +19,7 @@ namespace DotNetTool.Service.Commands
 
         internal Task<IEnumerable<DotNetToolInfo>> ListAsync()
         {
-            return GetAllInternalAsync(null);
+            return GetAllInternalAsync(string.Empty);
         }
 
         internal Task<IEnumerable<DotNetToolInfo>> ListAsync(string path)

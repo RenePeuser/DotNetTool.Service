@@ -7,7 +7,7 @@ namespace DotNetTool.Service
     {
         public static DotNetTool Create()
         {
-            var processService = new ProcessService(new ProcessBuilder());
+            var processService = new ProcessService();
             var installCommand = new InstallCommand(processService);
             var updateCommand = new UpdateCommand(processService);
             var uninstallCommand = new UninstallCommand(processService);

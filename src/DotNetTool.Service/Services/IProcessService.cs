@@ -6,6 +6,5 @@ namespace DotNetTool.Service.Services
     internal interface IProcessService
     {
         Task<CliRunResult> RunCliCommandAsync(string command, string arguments);
-        Task<CliRunResult> StartCliCommandAsync(string command, string arguments);
     }
 }

@@ -1,57 +1,24 @@
-﻿using System;
+﻿using System.Text;
 using System.Threading.Tasks;
 using DotNetTool.Service.ArgumentCheck;
-using DotNetTool.Service.Extensions;
 using DotNetTool.Service.Models;
+using DotNetTool.Service.Processes;
 
 namespace DotNetTool.Service.Services
 {
     internal class ProcessService : IProcessService
     {
-        private readonly IProcessBuilder _processBuilder;
-
-        internal ProcessService(IProcessBuilder processBuilder)
-        {
-            Throw.IfNull(() => processBuilder);
-
-            _processBuilder = processBuilder;
-        }
-
         public Task<CliRunResult> RunCliCommandAsync(string command, string arguments)
         {
-            var process = _processBuilder.BuildFrom(command, arguments);
-            var tcs = new TaskCompletionSource<CliRunResult>();
-            process.EnableRaisingEvents = true;
-            process.Exited += (_, __) =>
-            {
-                var readToEnd = process.StandardOutput.ReadToEnd();
-                tcs.TrySetResult(new CliRunResult(process.ExitCode, readToEnd));
-            };
+            var stringBuilder = new StringBuilder();
+            var errorStringBuilder = new StringBuilder();
 
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.UseShellExecute = false;
-            process.Start().IfFalseThen(() => tcs.SetException(new Exception($"Failed to start cli command: {command} {arguments}")));
-            return tcs.Task;
-        }
+            var process = Process.StartProcess(command, arguments, null, std => stringBuilder.AppendLine(std), error => errorStringBuilder.AppendLine(error));
+            process.WaitForExit();
 
-        public Task<CliRunResult> StartCliCommandAsync(string command, string arguments)
-        {
-            var process = _processBuilder.BuildFrom(command, arguments);
-            var tcs = new TaskCompletionSource<CliRunResult>();
-            process.EnableRaisingEvents = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.UseShellExecute = false;
-            var start = process.Start();
-            if (start)
-            {
-                var cliRunResult = new CliRunResult(0, $"Program: '{command}' successfully started");
-                tcs.SetResult(cliRunResult);
-            }
-            else
-            {
-                tcs.SetException(new Exception($"Failed to start cli command: {command} {arguments}"));
-            }
-            return tcs.Task;
+            var output = process.ExitCode == 0 ? stringBuilder.ToString() : errorStringBuilder.ToString();
+            var cliRunResult = new CliRunResult(process.ExitCode, output);
+            return Task.FromResult(cliRunResult);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DotNetTool.Service.Test
     [TestClass]
     public class DebbugHiddenTest
     {
-        private static IEnumerable<CSharpFileInfo> _csharpFileInfos;
+        private static IEnumerable<CSharpFileInfo> _csharpFileInfos = null!;
 
         [ClassInitialize]
         public static void ClassInit(TestContext testContext)
@@ -22,6 +22,8 @@ namespace DotNetTool.Service.Test
             var currentDirectory = new System.IO.DirectoryInfo(Environment.CurrentDirectory);
 
             var argumentCheckDirectory = FindFolderWithSources(currentDirectory, "DotNetTool.Service");
+            Assert.IsNotNull(argumentCheckDirectory);
+            
             var allCSharpFiles = argumentCheckDirectory.EnumerateFiles("*.cs", SearchOption.AllDirectories);
             _csharpFileInfos = allCSharpFiles.Select(csharpFile =>
             {
@@ -45,7 +47,7 @@ namespace DotNetTool.Service.Test
             Assert.IsFalse(missingHiddenAttribute.Any(), ToMessage(missingHiddenAttribute));
         }
 
-        private static System.IO.DirectoryInfo FindFolderWithSources(System.IO.DirectoryInfo startDirectoryInfo, string name)
+        private static System.IO.DirectoryInfo? FindFolderWithSources(System.IO.DirectoryInfo? startDirectoryInfo, string name)
         {
             if (startDirectoryInfo == null)
             {

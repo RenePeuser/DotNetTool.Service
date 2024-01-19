@@ -1,28 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
-    <Authors>Rene Peuser</Authors>
-    <Company>Rene Peuser Softwaresolutions</Company>
-    <Product>DotNetTool.Service</Product>
-    <PackageLicenseFile>license.txt</PackageLicenseFile>
-    <Copyright>Copyright 2020 (c) Rene Peuser. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</PackageProjectUrl>
-    <RepositoryUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</RepositoryUrl>
-    <PackageReleaseNotes>This is a prerelease version of DotNetTool.Service
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
+		<Authors>Rene Peuser</Authors>
+		<Company>Rene Peuser Softwaresolutions</Company>
+		<Product>DotNetTool.Service</Product>
+		<PackageLicenseFile>license.txt</PackageLicenseFile>
+		<Copyright>Copyright 2020 (c) Rene Peuser. All rights reserved.</Copyright>
+		<PackageProjectUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</PackageProjectUrl>
+		<RepositoryUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</RepositoryUrl>
+		<PackageReleaseNotes>This is a prerelease version of DotNetTool.Service
 - Add RunAsync for any commands to call
 - Add missing methods to IDotNetTool interface</PackageReleaseNotes>
-    <Description>Use 'dotnet tool' as service in your .net projects. The commands are wrapped so you can handle very comfortable the commands of the 'dotnet tool' cli as a service.</Description>
-    <PackageTags>C#;DotNet;CLI;dotenet tool;dotnet tool as as service;DNTAAS;</PackageTags>
-  </PropertyGroup>
+		<Description>Use 'dotnet tool' as service in your .net projects. The commands are wrapped so you can handle very comfortable the commands of the 'dotnet tool' cli as a service.</Description>
+		<PackageTags>C#;DotNet;CLI;dotenet tool;dotnet tool as as service;DNTAAS;</PackageTags>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ArgumentCheck\" />
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="ArgumentCheck\" />
+		<Folder Include="Extensions\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\license.txt" Pack="true" PackagePath="license.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\license.txt" Pack="true" PackagePath="license.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+	</ItemGroup>
 
 </Project>

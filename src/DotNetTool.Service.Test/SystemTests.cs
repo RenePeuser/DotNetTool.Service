@@ -9,8 +9,8 @@ namespace DotNetTool.Service.Test
     [TestClass]
     public class SystemTests
     {
-        private DotNetTool _dotNetTool;
-        private string _toolPath;
+        private DotNetTool _dotNetTool = null!;
+        private string _toolPath = null!;
         private Uri _sourceUri = new Uri("https://api.nuget.org/v3/index.json");
         private const string DotNetToolToInstall = "DotNetTool.Builder";
         private const string DotNetToolVersionToInstall = "0.5.6-beta";
