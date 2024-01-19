@@ -5,7 +5,7 @@
 
 trigger:
   - master
-  - refs/tags/*
+  - develop
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -14,21 +14,25 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
 
-- script: dotnet build --configuration $(buildConfiguration) ./src/DotNetTool.Service.sln  /p:Version='$(GitVersion.NuGetVersion)'
+- script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: dotnet test
-  inputs:
-    command: 'test'
-    projects: './DotNetTool.Service.sln'
-    arguments: '--configuration $(buildConfiguration)'
+- script: dotnet test
+  displayName: 'dotnet test'
 
-- script: dotnet pack ./src/DotNetTool.Service/DotNetTool.Service.csproj --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration) /p:Version='$(GitVersion.NuGetVersion)'
-  displayName: 'dotnet pack $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    command: 'pack'
+    packagesToPack: './src/DotNetTool.Service/DotNetTool.Service.csproj'
+    versioningScheme: 'off'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'publish artifacts'
+  displayName: Publish Artifacts
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
