@@ -28,7 +28,7 @@ steps:
   displayName: dotnet test
   inputs:
     command: 'test'
-    projects: './src/DotNetTool.Service.sln'
+    projects: './DotNetTool.Service.sln'
     arguments: '--configuration $(buildConfiguration)'
 
 - script: dotnet pack ./src/DotNetTool.Service/DotNetTool.Service.csproj --output $(Build.ArtifactStagingDirectory) --configuration $(buildConfiguration) /p:Version='$(GitVersion.NuGetVersion)'
