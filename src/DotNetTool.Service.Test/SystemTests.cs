@@ -11,7 +11,7 @@ namespace DotNetTool.Service.Test
     {
         private DotNetTool _dotNetTool = null!;
         private string _toolPath = null!;
-        private Uri _sourceUri = new Uri("https://api.nuget.org/v3/index.json");
+        private readonly Uri _sourceUri = new("https://api.nuget.org/v3/index.json");
         private const string DotNetToolToInstall = "DotNetTool.Builder";
         private const string DotNetToolVersionToInstall = "0.5.6-beta";
         private const string OlderDotNetToolVersion = "0.5.5-beta";
@@ -169,7 +169,7 @@ namespace DotNetTool.Service.Test
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
 
             var exist = await _dotNetTool.ExistsAsync(DotNetToolToInstall);
-            Assert.AreEqual(exist.Name.ToLower(), DotNetToolToInstall.ToLower());
+            Assert.AreEqual(exist?.Name.ToLower(), DotNetToolToInstall.ToLower());
         }
 
         [TestMethod]
@@ -179,7 +179,7 @@ namespace DotNetTool.Service.Test
             Assert.AreEqual(0, installResult.ExitCode, installResult.Output);
 
             var exist = await _dotNetTool.ExistsAsync(DotNetToolToInstall, _toolPath);
-            Assert.AreEqual(exist.Name.ToLower(), DotNetToolToInstall.ToLower());
+            Assert.AreEqual(exist?.Name.ToLower(), DotNetToolToInstall.ToLower());
         }
 
         [TestMethod]

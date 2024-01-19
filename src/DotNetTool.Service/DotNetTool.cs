@@ -104,14 +104,14 @@ namespace DotNetTool.Service
             return _uninstallCommand.UninstallAsync(toolName, toolPath);
         }
 
-        public Task<DotNetToolInfo> ExistsAsync(string toolName)
+        public Task<DotNetToolInfo?> ExistsAsync(string toolName)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
 
             return _existsCommand.ExistsAsync(toolName);
         }
 
-        public Task<DotNetToolInfo> ExistsAsync(string toolName, string localPath)
+        public Task<DotNetToolInfo?> ExistsAsync(string toolName, string localPath)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
 

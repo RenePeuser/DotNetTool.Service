@@ -16,7 +16,7 @@
             _listCommand = listCommand;
         }
 
-        internal async Task<DotNetToolInfo> ExistsAsync(string toolName)
+        internal async Task<DotNetToolInfo?> ExistsAsync(string toolName)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
 
@@ -24,7 +24,7 @@
             return result.FirstOrDefault(tool => tool.Name.ToLower() == toolName.ToLower());
         }
 
-        internal async Task<DotNetToolInfo> ExistsAsync(string toolName, string localPath)
+        internal async Task<DotNetToolInfo?> ExistsAsync(string toolName, string localPath)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
             Throw.IfNullOrWhiteSpace(() => localPath);

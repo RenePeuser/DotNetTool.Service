@@ -21,7 +21,7 @@ namespace DotNetTool.Service
         Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath, Uri source);
         Task<CliRunResult> UninstallAsync(string toolName);
         Task<CliRunResult> UninstallAsync(string toolName, string toolPath);
-        Task<DotNetToolInfo> ExistsAsync(string toolName);
-        Task<DotNetToolInfo> ExistsAsync(string toolName, string localPath);
+        Task<DotNetToolInfo?> ExistsAsync(string toolName);
+        Task<DotNetToolInfo?> ExistsAsync(string toolName, string localPath);
     }
 }
