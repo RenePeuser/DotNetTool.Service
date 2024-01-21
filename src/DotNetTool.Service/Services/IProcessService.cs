@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using DotNetTool.Service.Models;
 
-namespace DotNetTool.Service.Services
+namespace DotNetTool.Service
 {
     internal interface IProcessService
     {

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace DotNetTool.Service.ArgumentCheck
+namespace DotNetTool.Service
 {
     internal static class TcFuncFieldInfoExtractor
     {

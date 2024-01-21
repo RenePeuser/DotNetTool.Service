@@ -1,9 +1,6 @@
 ﻿using System.Threading.Tasks;
-using DotNetTool.Service.ArgumentCheck;
-using DotNetTool.Service.Models;
-using DotNetTool.Service.Services;
 
-namespace DotNetTool.Service.Commands
+namespace DotNetTool.Service
 {
     internal sealed class UninstallCommand
     {

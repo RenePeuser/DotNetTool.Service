@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using DotNetTool.Service.Commands;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetTool.Service.Test

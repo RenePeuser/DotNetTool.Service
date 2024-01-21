@@ -1,4 +1,4 @@
-﻿namespace DotNetTool.Service.Extensions
+﻿namespace DotNetTool.Service
 {
     internal static class StringExtensions
     {
@@ -19,7 +19,7 @@
 
         internal static bool IsNotNullOrWhiteSpace(this string source)
         {
-            return source.IsNullOrWhiteSpace().IsFalse();
+            return IsNullOrWhiteSpace(source).IsFalse();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DotNetTool.Service.Extensions
+namespace DotNetTool.Service
 {
     internal static class GenericTypeExtensions
     {

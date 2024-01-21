@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace DotNetTool.Service.Services
+namespace DotNetTool.Service
 {
     internal interface IProcess : IDisposable
     {

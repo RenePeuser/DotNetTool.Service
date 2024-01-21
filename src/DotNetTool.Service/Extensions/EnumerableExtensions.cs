@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DotNetTool.Service.ArgumentCheck;
 
-namespace DotNetTool.Service.Extensions
+namespace DotNetTool.Service
 {
     internal static class EnumerableExtensions
     {

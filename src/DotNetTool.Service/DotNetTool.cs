@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DotNetTool.Service.ArgumentCheck;
-using DotNetTool.Service.Commands;
-using DotNetTool.Service.Models;
 
 namespace DotNetTool.Service
 {

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 
-namespace DotNetTool.Service.ArgumentCheck
+namespace DotNetTool.Service
 {
     internal static class Throw
     {
@@ -54,14 +54,14 @@ namespace DotNetTool.Service.ArgumentCheck
         [DebuggerHidden]
         private static void IfWhiteSpace(Func<string> argument)
         {
-            if (!argument().IsNullOrWhiteSpace())
+            if (!ArgumentCheckExtensions.IsNullOrWhiteSpace(argument()))
             {
                 return;
             }
 
             throw new ArgumentException(
                 "The string must not be a whitespace.",
-                argument.GetParameterName(arg => arg.Is<string>() && arg.Cast<string>().IsNullOrWhiteSpace()));
+                argument.GetParameterName(arg => ArgumentCheckExtensions.Is<string>(arg) && ArgumentCheckExtensions.IsNullOrWhiteSpace(ArgumentCheckExtensions.Cast<string>(arg))));
         }
 
         [DebuggerHidden]

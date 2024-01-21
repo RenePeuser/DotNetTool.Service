@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotNetTool.Service.Models
+namespace DotNetTool.Service
 {
     public abstract class DisposableBase : IDisposable
     {

@@ -1,10 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using DotNetTool.Service.ArgumentCheck;
-using DotNetTool.Service.Extensions;
-using DotNetTool.Service.Models;
 
-namespace DotNetTool.Service.Commands
+namespace DotNetTool.Service
 {
     internal sealed class ExistsCommand
     {

@@ -1,9 +1,7 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
-using DotNetTool.Service.Models;
-using DotNetTool.Service.Processes;
 
-namespace DotNetTool.Service.Services
+namespace DotNetTool.Service
 {
     internal sealed class ProcessService : IProcessService
     {

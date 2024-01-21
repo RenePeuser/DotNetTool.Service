@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotNetTool.Service.Extensions;
-using DotNetTool.Service.Models;
-using DotNetTool.Service.Services;
 
-namespace DotNetTool.Service.Commands
+namespace DotNetTool.Service
 {
     internal sealed class ListCommand
     {
@@ -33,7 +30,7 @@ namespace DotNetTool.Service.Commands
             // ------------------------------------------------------------------------
             // gitversion.tool                         5.0.1        dotnet-gitversion
 
-            var commandArguments = path.IsNullOrWhiteSpace() ? "tool list --global" : $"tool list --tool-path {path}";
+            var commandArguments = StringExtensions.IsNullOrWhiteSpace(path) ? "tool list --global" : $"tool list --tool-path {path}";
 
             var listResult = await _processService.RunCliCommandAsync("dotnet", commandArguments).ConfigureAwait(false);
             if (listResult.ExitCode != 0)

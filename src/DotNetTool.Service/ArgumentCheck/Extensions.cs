@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace DotNetTool.Service.ArgumentCheck
+namespace DotNetTool.Service
 {
     public static class ArgumentCheckExtensions
     {

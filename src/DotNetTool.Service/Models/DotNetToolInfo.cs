@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace DotNetTool.Service.Models
+namespace DotNetTool.Service
 {
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     public class DotNetToolInfo

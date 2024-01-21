@@ -1,7 +1,6 @@
 using System;
-using DotNetTool.Service.ArgumentCheck;
 
-namespace DotNetTool.Service.Extensions
+namespace DotNetTool.Service
 {
     internal static class BoolExtensions
     {

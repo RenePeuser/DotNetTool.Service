@@ -1,4 +1,4 @@
-﻿namespace DotNetTool.Service.Extensions
+﻿namespace DotNetTool.Service
 {
     internal static class ObjectExtensions
     {

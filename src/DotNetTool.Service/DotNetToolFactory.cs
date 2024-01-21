@@ -1,7 +1,4 @@
-﻿using DotNetTool.Service.Commands;
-using DotNetTool.Service.Services;
-
-namespace DotNetTool.Service
+﻿namespace DotNetTool.Service
 {
     public static class DotNetToolFactory
     {
