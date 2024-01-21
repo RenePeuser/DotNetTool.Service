@@ -9,7 +9,7 @@ namespace DotNetTool.Service.ArgumentCheck
         [DebuggerHidden]
         internal static void IfLessThan<T>(Func<T> argumentFunc, T limit) where T : IComparable
         {
-            Throw.IfNull(() => argumentFunc);
+            IfNull(() => argumentFunc);
 
             if (!argumentFunc().IsLessThan(limit))
             {
@@ -28,15 +28,15 @@ namespace DotNetTool.Service.ArgumentCheck
                 throw new ArgumentNullException(nameof(argumentFunc));
             }
 
-            Throw.IfNullInternal(argumentFunc);
+            IfNullInternal(argumentFunc);
         }
 
         [DebuggerHidden]
         internal static void IfNullOrWhiteSpace(Func<string> argumentFunc)
         {
-            Throw.IfNull(() => argumentFunc);
-            Throw.IfNullInternal(argumentFunc);
-            Throw.IfWhiteSpace(argumentFunc);
+            IfNull(() => argumentFunc);
+            IfNullInternal(argumentFunc);
+            IfWhiteSpace(argumentFunc);
         }
 
         [DebuggerHidden]

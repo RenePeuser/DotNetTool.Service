@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotNetTool.Service.Models;
 using DotNetTool.Service.Extensions;
+using DotNetTool.Service.Models;
 using DotNetTool.Service.Services;
 
 namespace DotNetTool.Service.Commands
 {
-    internal class ListCommand
+    internal sealed class ListCommand
     {
         private readonly IProcessService _processService;
 
@@ -35,14 +35,14 @@ namespace DotNetTool.Service.Commands
 
             var commandArguments = path.IsNullOrWhiteSpace() ? "tool list --global" : $"tool list --tool-path {path}";
 
-            var listResult = await _processService.RunCliCommandAsync("dotnet", commandArguments);
+            var listResult = await _processService.RunCliCommandAsync("dotnet", commandArguments).ConfigureAwait(false);
             if (listResult.ExitCode != 0)
             {
-                throw new Exception($"Error occured: '{listResult.Output}'");
+                throw new DotNetToolException($"Error occured: '{listResult.Output}'");
             }
 
             var toolRows = listResult.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            var dotNetToolRows = toolRows.Reverse().TakeWhile(toolRow => !toolRow.StartsWith("----")).ToList();
+            var dotNetToolRows = toolRows.Reverse().TakeWhile(toolRow => !toolRow.StartsWith("----", StringComparison.OrdinalIgnoreCase)).ToList();
             var dotNetTools = dotNetToolRows.Select(row =>
             {
                 var toolInfo = row.Split().FilterNullOrWhitespace().ToArray();
@@ -52,4 +52,6 @@ namespace DotNetTool.Service.Commands
             return dotNetTools;
         }
     }
+
+    public class DotNetToolException(string message) : Exception(message);
 }

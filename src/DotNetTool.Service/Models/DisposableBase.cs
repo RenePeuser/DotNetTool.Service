@@ -1,7 +1,7 @@
-﻿namespace DotNetTool.Service.Models
-{
-    using System;
+﻿using System;
 
+namespace DotNetTool.Service.Models
+{
     public abstract class DisposableBase : IDisposable
     {
         private bool _disposed;

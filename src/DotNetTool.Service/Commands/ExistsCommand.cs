@@ -1,11 +1,12 @@
-﻿namespace DotNetTool.Service.Commands
-{
-    using System.Linq;
-    using System.Threading.Tasks;
-    using ArgumentCheck;
-    using Models;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using DotNetTool.Service.ArgumentCheck;
+using DotNetTool.Service.Extensions;
+using DotNetTool.Service.Models;
 
-    internal class ExistsCommand
+namespace DotNetTool.Service.Commands
+{
+    internal sealed class ExistsCommand
     {
         private readonly ListCommand _listCommand;
 
@@ -20,8 +21,8 @@
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
 
-            var result = await _listCommand.ListAsync();
-            return result.FirstOrDefault(tool => tool.Name.ToLower() == toolName.ToLower());
+            var result = await _listCommand.ListAsync().ConfigureAwait(false);
+            return result.FirstOrDefault(tool => tool.Name.ToUpperInvariant().EqualsTo(toolName.ToUpperInvariant()));
         }
 
         internal async Task<DotNetToolInfo?> ExistsAsync(string toolName, string localPath)
@@ -29,8 +30,8 @@
             Throw.IfNullOrWhiteSpace(() => toolName);
             Throw.IfNullOrWhiteSpace(() => localPath);
 
-            var result = await _listCommand.ListAsync(localPath);
-            return result.FirstOrDefault(tool => tool.Name.ToLower() == toolName.ToLower());
+            var result = await _listCommand.ListAsync(localPath).ConfigureAwait(false);
+            return result.FirstOrDefault(tool => tool.Name.ToUpperInvariant().EqualsTo(toolName.ToUpperInvariant()));
         }
     }
 }

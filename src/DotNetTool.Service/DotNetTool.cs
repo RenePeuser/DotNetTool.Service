@@ -1,24 +1,27 @@
-﻿using DotNetTool.Service.ArgumentCheck;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DotNetTool.Service.ArgumentCheck;
+using DotNetTool.Service.Commands;
+using DotNetTool.Service.Models;
 
 namespace DotNetTool.Service
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Commands;
-    using Models;
-
-
     public class DotNetTool : IDotNetTool
     {
-        private readonly InstallCommand _installCommand;
-        private readonly UpdateCommand _updateCommand;
-        private readonly ExistsCommand _existsCommand;
-        private readonly UninstallCommand _uninstallCommand;
-        private readonly ListCommand _listCommand;
         private readonly CustomCommand _customCommand;
+        private readonly ExistsCommand _existsCommand;
+        private readonly InstallCommand _installCommand;
+        private readonly ListCommand _listCommand;
+        private readonly UninstallCommand _uninstallCommand;
+        private readonly UpdateCommand _updateCommand;
 
-        internal DotNetTool(InstallCommand installCommand, UpdateCommand updateCommand, ExistsCommand existsCommand, UninstallCommand uninstallCommand, ListCommand listCommand, CustomCommand customCommand)
+        internal DotNetTool(InstallCommand installCommand,
+                            UpdateCommand updateCommand,
+                            ExistsCommand existsCommand,
+                            UninstallCommand uninstallCommand,
+                            ListCommand listCommand,
+                            CustomCommand customCommand)
         {
             Throw.IfNull(() => installCommand);
             Throw.IfNull(() => updateCommand);
@@ -84,7 +87,10 @@ namespace DotNetTool.Service
             return _installCommand.InstallAsync(toolName, version, toolPath);
         }
 
-        public Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath, Uri source)
+        public Task<CliRunResult> InstallAsync(string toolName,
+                                               string version,
+                                               string toolPath,
+                                               Uri source)
         {
             return _installCommand.InstallAsync(toolName, version, toolPath, source);
         }

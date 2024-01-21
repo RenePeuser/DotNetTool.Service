@@ -17,20 +17,20 @@ namespace DotNetTool.Service.Test
         private static IEnumerable<CSharpFileInfo> _csharpFileInfos = null!;
 
         [ClassInitialize]
-        public static void ClassInit(TestContext testContext)
+        public static void ClassInit(TestContext _)
         {
-            var currentDirectory = new System.IO.DirectoryInfo(Environment.CurrentDirectory);
+            var currentDirectory = new DirectoryInfo(Environment.CurrentDirectory);
 
             var argumentCheckDirectory = FindFolderWithSources(currentDirectory, "DotNetTool.Service");
             Assert.IsNotNull(argumentCheckDirectory);
-            
+
             var allCSharpFiles = argumentCheckDirectory.EnumerateFiles("*.cs", SearchOption.AllDirectories);
             _csharpFileInfos = allCSharpFiles.Select(csharpFile =>
-            {
-                var syntaxTree = CSharpSyntaxTree.ParseText(File.ReadAllText(csharpFile.FullName));
-                return new CSharpFileInfo(csharpFile, syntaxTree);
-            })
-                .ToList();
+                                             {
+                                                 var syntaxTree = CSharpSyntaxTree.ParseText(File.ReadAllText(csharpFile.FullName));
+                                                 return new CSharpFileInfo(csharpFile, syntaxTree);
+                                             })
+                                             .ToList();
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace DotNetTool.Service.Test
             Assert.IsFalse(missingHiddenAttribute.Any(), ToMessage(missingHiddenAttribute));
         }
 
-        private static System.IO.DirectoryInfo? FindFolderWithSources(System.IO.DirectoryInfo? startDirectoryInfo, string name)
+        private static DirectoryInfo? FindFolderWithSources(DirectoryInfo? startDirectoryInfo, string name)
         {
             if (startDirectoryInfo == null)
             {
@@ -90,31 +90,19 @@ namespace DotNetTool.Service.Test
         }
 
         [DebuggerDisplay("{CSharpFileInfo.Name}")]
-        private class AnalyzeResult
+        private sealed class AnalyzeResult(FileInfo cSharpFileInfo, string methodName)
         {
-            public AnalyzeResult(System.IO.FileInfo cSharpFileInfo, string methodName)
-            {
-                CSharpFileInfo = cSharpFileInfo;
-                MethodName = methodName;
-            }
+            public FileInfo CSharpFileInfo { get; } = cSharpFileInfo;
 
-            public System.IO.FileInfo CSharpFileInfo { get; }
-
-            public string MethodName { get; }
+            public string MethodName { get; } = methodName;
         }
 
         [DebuggerDisplay("{FileInfo.Name}")]
-        private class CSharpFileInfo
+        private sealed class CSharpFileInfo(FileInfo fileInfo, SyntaxTree syntaxTree)
         {
-            public CSharpFileInfo(System.IO.FileInfo fileInfo, SyntaxTree syntaxTree)
-            {
-                FileInfo = fileInfo;
-                SyntaxTree = syntaxTree;
-            }
+            public FileInfo FileInfo { get; } = fileInfo;
 
-            public System.IO.FileInfo FileInfo { get; }
-
-            public SyntaxTree SyntaxTree { get; }
+            public SyntaxTree SyntaxTree { get; } = syntaxTree;
         }
     }
 }

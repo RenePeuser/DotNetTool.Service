@@ -1,13 +1,12 @@
-﻿using DotNetTool.Service.Services;
+﻿using System;
+using System.Threading.Tasks;
+using DotNetTool.Service.ArgumentCheck;
+using DotNetTool.Service.Models;
+using DotNetTool.Service.Services;
 
 namespace DotNetTool.Service.Commands
 {
-    using System;
-    using System.Threading.Tasks;
-    using ArgumentCheck;
-    using Models;
-
-    internal class InstallCommand
+    internal sealed class InstallCommand
     {
         private readonly IProcessService _processService;
 
@@ -55,7 +54,10 @@ namespace DotNetTool.Service.Commands
             return _processService.RunCliCommandAsync("dotnet", $"tool install {toolName} --version {version} --tool-path {toolPath}");
         }
 
-        internal Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath, Uri source)
+        internal Task<CliRunResult> InstallAsync(string toolName,
+                                                 string version,
+                                                 string toolPath,
+                                                 Uri source)
         {
             Throw.IfNullOrWhiteSpace(() => toolName);
             Throw.IfNullOrWhiteSpace(() => version);

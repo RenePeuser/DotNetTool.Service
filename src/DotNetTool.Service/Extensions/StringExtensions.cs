@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace DotNetTool.Service.Extensions
+﻿namespace DotNetTool.Service.Extensions
 {
     internal static class StringExtensions
     {

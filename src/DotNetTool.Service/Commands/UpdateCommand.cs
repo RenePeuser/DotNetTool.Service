@@ -5,7 +5,7 @@ using DotNetTool.Service.Services;
 
 namespace DotNetTool.Service.Commands
 {
-    internal class UpdateCommand
+    internal sealed class UpdateCommand
     {
         private readonly IProcessService _processService;
 

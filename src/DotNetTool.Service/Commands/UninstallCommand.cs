@@ -1,12 +1,11 @@
-﻿using DotNetTool.Service.Services;
+﻿using System.Threading.Tasks;
+using DotNetTool.Service.ArgumentCheck;
+using DotNetTool.Service.Models;
+using DotNetTool.Service.Services;
 
 namespace DotNetTool.Service.Commands
 {
-    using System.Threading.Tasks;
-    using ArgumentCheck;
-    using Models;
-
-    internal class UninstallCommand
+    internal sealed class UninstallCommand
     {
         private readonly IProcessService _processService;
 

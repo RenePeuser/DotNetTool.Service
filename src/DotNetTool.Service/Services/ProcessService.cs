@@ -5,7 +5,7 @@ using DotNetTool.Service.Processes;
 
 namespace DotNetTool.Service.Services
 {
-    internal class ProcessService : IProcessService
+    internal sealed class ProcessService : IProcessService
     {
         public Task<CliRunResult> RunCliCommandAsync(string command, string arguments)
         {

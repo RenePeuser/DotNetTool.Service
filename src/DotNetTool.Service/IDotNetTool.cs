@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DotNetTool.Service.Models;
 
 namespace DotNetTool.Service
 {
-    using System;
-    using System.Threading.Tasks;
-    using Models;
-
     public interface IDotNetTool
     {
         Task<CliRunResult> UpdateAsync(string toolName);
@@ -18,7 +17,12 @@ namespace DotNetTool.Service
         Task<CliRunResult> InstallAsync(string toolName, string version);
         Task<CliRunResult> InstallAsync(string toolName, string version, Uri source);
         Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath);
-        Task<CliRunResult> InstallAsync(string toolName, string version, string toolPath, Uri source);
+
+        Task<CliRunResult> InstallAsync(string toolName,
+                                        string version,
+                                        string toolPath,
+                                        Uri source);
+
         Task<CliRunResult> UninstallAsync(string toolName);
         Task<CliRunResult> UninstallAsync(string toolName, string toolPath);
         Task<DotNetToolInfo?> ExistsAsync(string toolName);

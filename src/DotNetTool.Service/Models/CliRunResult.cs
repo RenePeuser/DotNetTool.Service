@@ -1,7 +1,7 @@
-﻿namespace DotNetTool.Service.Models
-{
-    using System.Diagnostics;
+﻿using System.Diagnostics;
 
+namespace DotNetTool.Service.Models
+{
     [DebuggerDisplay("ExitCode: '{" + nameof(ExitCode) + "}'")]
     public class CliRunResult
     {

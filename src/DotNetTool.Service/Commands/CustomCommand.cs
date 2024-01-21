@@ -1,10 +1,10 @@
-﻿namespace DotNetTool.Service.Commands
-{
-    using System.Threading.Tasks;
-    using Models;
-    using Services;
+﻿using System.Threading.Tasks;
+using DotNetTool.Service.Models;
+using DotNetTool.Service.Services;
 
-    internal class CustomCommand
+namespace DotNetTool.Service.Commands
+{
+    internal sealed class CustomCommand
     {
         private readonly IProcessService _processService;
 
