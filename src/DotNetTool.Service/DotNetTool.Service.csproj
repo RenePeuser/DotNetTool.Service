@@ -6,15 +6,14 @@
 		<Product>DotNetTool.Service</Product>
 		<PackageLicenseFile>license.txt</PackageLicenseFile>
 		<Copyright>Copyright 2020 (c) Rene Peuser. All rights reserved.</Copyright>
-		<PackageProjectUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</PackageProjectUrl>
-		<RepositoryUrl>https://renepeuser.visualstudio.com/DotNetTool.Service</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/RenePeuser/DotNetTool.Service</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/RenePeuser/DotNetTool.Service</RepositoryUrl>
 		<PackageReleaseNotes>Fix process starts command which hangs in some situations</PackageReleaseNotes>
 		<Description>Use 'dotnet tool' as service in your .net projects. The commands are wrapped so you can handle very comfortable the commands of the 'dotnet tool' cli as a service.</Description>
 		<PackageTags>C#;DotNet;CLI;dotenet tool;dotnet tool as as service;DNTAAS;</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="ArgumentCheck\" />
 		<Folder Include="Extensions\" />
 	</ItemGroup>
 
@@ -23,10 +22,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Argument.Check" Version="5.0.3" />
 	  <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
+	  <PackageReference Include="System.Collections.Immutable" Version="9.0.2" />
+	  <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
 	</ItemGroup>
 
 </Project>
