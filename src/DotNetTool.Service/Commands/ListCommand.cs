@@ -39,7 +39,7 @@ namespace DotNetTool.Service
             }
 
             var toolRows = listResult.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            var dotNetToolRows = toolRows.Reverse().TakeWhile(toolRow => !toolRow.StartsWith("----", StringComparison.OrdinalIgnoreCase)).ToList();
+            var dotNetToolRows = Enumerable.Reverse(toolRows).TakeWhile(toolRow => !toolRow.StartsWith("----", StringComparison.OrdinalIgnoreCase)).ToList();
             var dotNetTools = dotNetToolRows.Select(row =>
             {
                 var toolInfo = row.Split().FilterNullOrWhitespace().ToArray();
