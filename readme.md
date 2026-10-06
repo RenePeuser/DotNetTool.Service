@@ -1,9 +1,6 @@
 ﻿# DotNetTool.Service
 
-[![Build](https://github.com/RenePeuser/DotNetTool.Service/actions/workflows/build.yml/badge.svg)](https://github.com/RenePeuser/DotNetTool.Service/actions/workflows/build.yml)
-[![NuGet](https://img.shields.io/nuget/v/DotNetTool.Service.svg)](https://www.nuget.org/packages/DotNetTool.Service/)
-[![Downloads](https://img.shields.io/nuget/dt/DotNetTool.Service.svg)](https://www.nuget.org/packages/DotNetTool.Service/)
-[![Build](https://github.com/RenePeuser/DotNetTool.Service/actions/workflows/build.yml/badge.svg)](https://github.com/RenePeuser/DotNetTool.Service/actions/workflows/build.yml)
+[![Build](https://github.com/RenePeuser/DotNetTool.Service/actions/workflows/build-and-publish.yml/badge.svg)](https://github.com/RenePeuser/DotNetTool.Service/actions/workflows/build-and-publish.yml)
 [![NuGet](https://img.shields.io/nuget/v/DotNetTool.Service.svg)](https://www.nuget.org/packages/DotNetTool.Service/)
 [![Downloads](https://img.shields.io/nuget/dt/DotNetTool.Service.svg)](https://www.nuget.org/packages/DotNetTool.Service/)
 ```
